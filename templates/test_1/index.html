@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{%load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+    <h1>Test Django ...</h1>
+    <div>
+        hey there partner! <br />
+        <strong> {{ boldmessage }}</strong><br/>
+    </div>
+    <h2>最受欢迎的类别</h2>
+    <div>
+    {% if categories %}
+        <ul>
+            {% for category in categories %}
+            <li>
+                <a href="/test_1/category/{{ category.slug }}">{{ category.name }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <strong>There are no categories present.</strong>
+    {% endif %}
+    <h2>最受欢迎的页面</h2>
+    {% if pages %}
+        <ul>
+        {% for page in pages %}
+            <li>
+            <a href={{ page.url }}>{{ page.title }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+    <div>
+        <a href="/test_1/about/"> About Rango</a><br/>
+        <a href="/test_1/add_category/"> Add a new category </a><br/>
+        <img src="{% static 'images/test.png' %}" width="400px" height="400px" alt = ”Picture“/>
+        <img src="{{MEDIA_URL}}cat.jpg" alt="cat"/>
+    </div>
+</body>
+</html>
